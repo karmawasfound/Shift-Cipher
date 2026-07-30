@@ -1,0 +1,102 @@
+#Creating a program to decipher the inputted encoded text
+def decode():
+    global newtext
+    global correct
+    global k
+    global freq
+    newtext = ""
+    for i in range(0, length):
+        newASCII = 0
+        ASCII = ord(text[i])
+        if k != -1:
+            k = int(k)
+        elif ASCII >= 97 and ASCII <= 122:
+            k = abs(ord("e") - (freq.index(max(freq)) + 97))
+        elif ASCII >= 65 and ASCII <= 90:
+            k = abs(ord("E") - (freq.index(max(freq)) + 65))
+        if text[i].isalpha() == True:
+            newASCII = ASCII - k
+            if (ASCII >= 97 and ASCII <= 122 and newASCII < 97) or (ASCII >= 65 and ASCII <= 90 and newASCII < 65):
+                newASCII = newASCII + 26
+        else:
+            newASCII = ASCII
+        newtext = newtext + chr(newASCII)
+    freq[freq.index(max(freq))] = 0
+    #Asking if the content after shifting is correct. 
+    print("Shifted text: ",newtext)
+    correct = input("Is the output correct?(Y/N): ")
+       
+print("This program is a shift cipher decrypter that can decrypt an encoded message\neither by with user input or by guessing the number of times it shifted.\nIt will shift up by k (number it has shifted).")
+
+#Ask the user for the text file to be decrypted
+filename = input("Please enter file name: ")
+
+#Checking whether the file really exists or not
+import os
+if not os.path.exists(filename):
+    filename = input("Please enter a valid file name: ")
+
+#Open the file
+textinput = open(filename,"r")
+
+#Get the contents of the file and store it in an array
+text = textinput.read()
+print("Original text: ",text)
+
+#Close the file
+textinput.close()
+
+#Find the length of the text
+length = len(text)
+
+#Initializing lists and variables
+newtext = ""
+correct = "N"
+
+#Ask if the user has a number k to be shifted in mind
+manual = input("Do you have a number to shift the text in mind? (Y/N): ")
+
+#Storing the frequency of each letter in the text in the list
+freq = [0]*26
+for i in range(0, length):
+    if ord(text[i]) >= 97 and ord(text[i]) <= 122:
+        freq[ord(text[i])-97] = freq[ord(text[i])-97] + 1
+    elif ord(text[i]) >= 65 and ord(text[i]) <= 90:
+        freq[ord(text[i])-65] = freq[ord(text[i])-65] + 1
+
+#Asking for the input of Manual again if the input of Manual is invalid
+while manual != "Y" and manual != "N":
+    manual = input("Please enter a valid input (Y/N): ")
+
+#Allowing users to either input the value k they desire when Manual is enabled or choose to exit manual inputting
+while manual == "Y":
+    k = input("Please input a number: ")
+    while k.isdigit() == False:
+        k = input("Please input a valid number: ")
+    decode()
+    if correct == "Y":
+        manual = "N"
+    elif correct == "N":
+        manual = input("Would you like to try again (Y/N)?: ")
+    while correct != "Y" and correct != "N":
+        correct = input("Please enter a valid answer (Y/N):")
+
+#Finding k automatically and shifting the encrypted text by k
+while manual == "N" and correct == "N":
+    k = -1
+    #Decode the text
+    decode()
+    #Asking the input until the input is valid
+    while correct != "Y" and correct != "N":
+        correct = input("Please enter a valid answer (Y/N):")
+    #Repeating the shifting process again until the output is correct
+
+#Creating a new file (name is decided by user) and storing the new decrypted text in it
+if correct == "Y":
+    #Opening a new file and putting the correct text into the file
+    outputfilename = input("Please input a name for the file which will store the decrypted text.\nInputting the same name as the old file will overwrite its contents: ")
+    textoutput = open(outputfilename,"w")
+    textoutput.write(newtext)  
+    #Close the file
+    textoutput.close()
+    print("Text has been added to your file. Decrypted text: ",newtext)
