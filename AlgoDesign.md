@@ -1,8 +1,7 @@
-# Algorithm Design
+# Algorithm Design (Flowchart at end)
 
 ## Initialization 
 After receiving the text file (input), the program will store the text in a list called msg. In the program, a variable named new_msg will be initialized for later use, and a list called freq, with a length of 26 and each stored initially with 0 (in integer type), is created to store the frequency of alphabetical letters in msg. 
-(Flowchart at the end)
 
 
 ## Frequency of letters
