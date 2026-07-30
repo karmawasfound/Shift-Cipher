@@ -1,0 +1,13 @@
+  One limitation is that the program does not follow the original plan of the special cases. As I found out it was not only difficult to execute, as the program would have to juggle between multiple methods in each shift, it seems that the original plan was too ambitious. For example, the special case of commonly repeated letters was hard to implement, as I would have to create an entirely new system simply to keep count, making it less efficient for the program if there are little repeated letters, and also time consuming. Because of this, I only implemented the ASCII code of the most frequent letter, E, as the number to deduct. Later, this will be changed so that not only the most frequent letter E will be used as a reference, but also other frequently used letters in order to make the program more efficient.
+
+  Another is that some of the code is a bit repetitive. For example, the letter to be shifted (k) is calculated many times despite k being consistent (in each shift). Due to time constraints, I was not able to polish this part of the code. This will be improved later so that the letter k only calculates once for each text message shift, instead of each letter shift.
+
+  Another is that I forgot to implement a for-loop when validating the file name. This has caused the program to automatically end if the user inputs the file name wrongly twice. This was due to a lack of testing when implementing this feature. Later, this will be changed from an if condition to a for-loop to make it more user-friendly.
+
+  Another is that during Method 1, if the user enters an invalid input when the program asks if the shifted result is correct or not, the program will ask for another value no matter what. This happened because of a lack of testing. This bug will be fixed in the future. 
+
+  Another one is that after progressing to Method 2, users can’t go back to Method 1. This may be troublesome for users who want to backtrack. This will be changed later in order to make it more user-friendly.
+
+  Another is that the output is hard to look at if the text message is long, and there are lots of tries in the shifting process, as shown in the questionnaire results. This will be changed from the original to one where the output is less cluttered, by implementing a line break \n in between the outputs, so that it is more reader-friendly.
+
+  Moreover, concerning the readability, I may also change it so that instead of showing the whole message, I will only show a few letters (eg. the first 5 letters to the text message) in order to shorten the output message and make it more readable and less cluttered. The whole message will only show once the user thinks that the message has been correctly shifted.
