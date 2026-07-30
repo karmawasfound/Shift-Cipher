@@ -24,7 +24,7 @@ After receiving the text file (input), the program will store the text in a list
   All outputs will be stored in new_msg. The most likely special case in the above will be outputted first, followed by the most likely special case of the next scenario. After all most likely cases have been exhausted, the 2nd most likely case will be outputted.
 
 
-Shifting
+## Shifting
   After the data frequency, a for loop will be executed as a function. After defining the function,  which will be responsible for shifting, the for loop will be as long as the length of the number of characters in msg. In each loop, it will be shifting the letter corresponding to the number of times (nth times) it has looped. k will be the number the whole text message will shift, and is inputted into the function.
 
   In order to find the number to shift the characters in the special cases, in each loop, the character will be turned into ASCII code form first. Then, the program will find the absolute value, k, of the original letter and the predicted letter, and add it to the ASCII code of the letters. It is noted that during shifting, if the ASCII code goes out of the alphabet bound (65-90), it will then deduct (instead of add) the number to be shifted (details of shifting in the above segment).  
