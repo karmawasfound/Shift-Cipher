@@ -1,12 +1,14 @@
-Initialization 
+# Algorithm Design
+
+## Initialization 
 After receiving the text file (input), the program will store the text in a list called msg. In the program, a variable named new_msg will be initialized for later use, and a list called freq, with a length of 26 and each stored initially with 0 (in integer type), is created to store the frequency of alphabetical letters in msg. 
 
 
-Frequency of letters
+## Frequency of letters
  Then, a for loop will be executed, which will be as long as the length of the number of characters in msg. In each loop, the loop will be checking the letter corresponding to the number of times (nth times) it has looped. Inside the loop, a temporary variable ch will be used to store the ASCII code of the character. Since the text only contains capital letters, we only need to check whether the character’s ASCII code falls within 65 to 90 (inclusive). If it does, it will be stored in the (ASCII code of letter - 65)th term of the list freq, and the counter will go up by 1. If it doesn’t, the loop will automatically go to the next loop ((n+1)th), until all characters of msg have been checked. After the data frequency of the text message, decryption of the text will start.
 
 
-Special cases
+## Special cases
   Each loop, the character will be turned into ASCII code form. Since the English language has some special rules and traits, this program will be utilizing them in order to quicken the decryption process.
 
   First, since SS, EE, TT, FF and LL are the 1st, 2nd, 3rd and 4th most common repeats of letters in English, by referencing the text, if there are repeats of letters, it will find the absolute value, k, of the highest number in list freq and S. If the user deems it wrong, then the absolute value, k, of the highest number in list freq and E will be found and shifted, and so on.
