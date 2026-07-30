@@ -31,3 +31,4 @@ After receiving the text file (input), the program will store the text in a list
 
   If the user deems the text to be deciphered correctly, the correct text message will be stored back into the original file. However, if the user still deems it incorrect, it will continue shifting as mentioned in the above segment. new_msg will be cleared for the next loop. If even after exhausting all the special cases, the message is still not decrypted, the program will shift the text message according to the alphabetical order until the message is decrypted. The program will output new_msg, then it will end.
 
+
